@@ -54,11 +54,17 @@ package:
   artifact: target/${self:service}-${self:provider.stage}.jar
 
 functions:
-  getTasks:
-    handler: com.serverless.GetTasks
+  listTasks:
+    handler: com.serverless.ListTasks
     events:
       - http:
           path: /tasks
+          method: get
+  getTask:
+    handler: com.serverless.GetTask
+    events:
+      - http:
+          path: /tasks/{id}
           method: get
 
 #    The following are a few example events you can configure
